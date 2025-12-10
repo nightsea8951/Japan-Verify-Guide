@@ -136,9 +136,7 @@
             padding: 5px 0;
         }
         /* Dropdown 預設打開 */
-        .dropdown.show .dropdown-content {
-            display: block;
-        }
+        /* 已移除 .dropdown.show .dropdown-content { display: block; } */
 
         /* Dropdown 連結樣式 */
         .dropdown-content a {
@@ -275,24 +273,24 @@
 
     <div class="navbar">
         <!-- 服務總覽 -->
-        <a href="overview.html" class="nav-item">🏠 服務總覽</a>
+        <a href="index.html" class="nav-item">🏠 服務總覽</a>
         
         <!-- 抽選/票務 - Dropdown 1 -->
         <div class="dropdown btn-ticket" id="dropdown-ticket">
             <div class="dropbtn">🎫 抽選/票務平台 <span style="font-size: 0.8em;">▼</span></div>
             <div class="dropdown-content">
-                <a href="index.html">EPLUS 註冊教學</a>
+                <a href="eplus_guide.html">EPLUS 註冊教學</a>
                 <a href="lawson.html">LAWSON TICKET</a>
                 <a href="pia.html">PIA (ぴあ)</a>
             </div>
         </div>
 
         <!-- 數位支付 - Dropdown 2 (Active/Show) -->
-        <div class="dropdown btn-payment show" id="dropdown-payment">
+        <div class="dropdown btn-payment" id="dropdown-payment">
             <div class="dropbtn">💳 數位支付認證 <span style="font-size: 0.8em;">▼</span></div>
             <div class="dropdown-content">
                 <a href="ana_pay.html" class="active">ANA Pay 啟用</a>
-                <a href="v_perca.html">V-preca 驗證</a>
+                <a href="v_perca.html">V-perca 驗證</a>
                 <a href="paypal.html">PayPal 日本帳號</a>
                 <a href="google_verify.html">Google 帳號驗證</a>
             </div>
@@ -392,7 +390,7 @@
             <h3>想快速開通 ANA Pay 累積哩程？</h3>
             <p>ANA Pay 驗證失敗將導致帳號鎖定。使用嗨寶貓服務，確保您以最快、最安全的方式通過日本手機號碼認證。</p>
             <!-- 這裡非常重要！請替換成你主站的驗證商品購買連結 -->
-            <a href="https://www.hibabyfunbox.com/collections/japan-sms-verification/products/sms-ana-pay" target="_blank" class="cta-button">立即購買 ANA Pay 驗證服務</a>
+            <a href="【請替換成你主站的驗證商品購買連結】" target="_blank" class="cta-button">立即購買 ANA Pay 驗證服務</a>
         </div>
         
         <p style="text-align: center; font-size: 0.9em; margin-top: 30px; color: #6b7280;">本指南由嗨寶貓數位服務提供，所有內容僅供教學參考。如需驗證服務請透過上方連結購買。</p>
@@ -416,6 +414,9 @@
 
         // 監聽器：點擊下拉選單按鈕時觸發
         document.addEventListener('DOMContentLoaded', () => {
+             // 【新增：確保頁面載入時滾動到頂部】
+            window.scrollTo(0, 0);
+
             document.querySelectorAll('.dropbtn').forEach(button => {
                 button.addEventListener('click', toggleDropdown);
             });
