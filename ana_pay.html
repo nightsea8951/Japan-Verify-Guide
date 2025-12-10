@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANA Pay 啟用認證教學：海外用戶完整指南 - 嗨寶貓</title>
+    <!-- SEO 優化：關鍵字融入 Meta Description -->
+    <meta name="description" content="最詳細的 ANA Pay 啟用教學，解決海外用戶無法通過日本手機號碼驗證的難題。一站式提供安全、即時的簡訊驗證服務。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS 變數定義 (Tech Blue Palette) */
+        :root {
+            --color-primary: #1e3a8a; /* 深藍色 (近海軍藍) */
+            --color-secondary: #3b82f6; /* 科技藍 */
+            --color-accent: #ff5722; /* 橘色強調 (CTA) */
+            --color-background: #f1f5f9; /* 輕盈的背景灰 */
+            --color-text: #1f2937;
+            
+            /* 類別專屬顏色定義 */
+            --color-ticket: #f97316; 
+            --color-payment: #10b981; /* 數位支付：綠色 */
+            --color-content: #8b5cf6; 
+            --color-merch: #06b6d4; 
+            --color-life: #d97706; 
+            
+            /* 頁面主題色：數位支付綠 */
+            --page-theme-color: var(--color-payment);
+        }
+
+        /* 全域設定 */
+        body {
+            font-family: 'Noto Sans TC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.7; 
+        }
+        
+        /* 頁首 Header */
+        .header {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        .header p {
+            margin-top: 8px;
+            font-size: 1.1em;
+            opacity: 0.85;
+        }
+
+        /* 導航欄 Navbar */
+        .navbar {
+            background-color: var(--color-secondary);
+            padding: 10px 0;
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Nav Item 基礎樣式 */
+        .nav-item, .dropbtn {
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            margin: 5px;
+            border-radius: 4px;
+            transition: background-color 0.3s, transform 0.1s;
+            font-weight: 500;
+            display: inline-block;
+            cursor: pointer;
+            background-color: var(--color-secondary); /* 預設為科技藍 */
+        }
+        
+        /* 類別專屬按鈕顏色 */
+        .btn-ticket .dropbtn { background-color: var(--color-ticket); }
+        .btn-payment .dropbtn { background-color: var(--page-theme-color); } /* 使用頁面主題色 (綠色) */
+        .btn-content .dropbtn { background-color: var(--color-content); }
+        .btn-merch .dropbtn { background-color: var(--color-merch); }
+        .btn-life .dropbtn { background-color: var(--color-life); }
+
+        /* Hover/Active 狀態 */
+        .nav-item:hover {
+            background-color: #2563eb;
+            transform: translateY(-1px);
+        }
+        .dropbtn:hover {
+            opacity: 0.85; 
+            transform: translateY(-1px);
+        }
+
+        /* 當前頁面樣式 */
+        .nav-item.active, .dropdown-content a.active {
+            background-color: var(--color-primary) !important; /* 強制使用深藍色作為 Active 背景 */
+            font-weight: 700;
+        }
+        
+        /* CTA 按鈕樣式 */
+        .cta-nav {
+            background-color: var(--color-accent);
+            font-weight: 700;
+        }
+        .cta-nav:hover {
+            background-color: #e64a19;
+        }
+
+        /* Dropdown 內容區域 */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin: 5px;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--color-primary); 
+            min-width: 180px;
+            max-height: 400px;
+            overflow-y: auto;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            z-index: 10;
+            border-radius: 4px;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: left;
+            padding: 5px 0;
+        }
+        /* Dropdown 預設打開 */
+        .dropdown.show .dropdown-content {
+            display: block;
+        }
+
+        /* Dropdown 連結樣式 */
+        .dropdown-content a {
+            color: white;
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.2s;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+        .dropdown-content a:hover {
+            background-color: #2563eb;
+            transform: none;
+        }
+        
+        /* 內容容器 Container */
+        .container {
+            max-width: 960px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* 標題與分隔線 */
+        h2 {
+            color: var(--color-primary);
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-top: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--page-theme-color); /* 使用綠色分隔線 */
+        }
+        
+        /* 步驟卡片 Step Card */
+        .step-container {
+            margin-top: 30px;
+        }
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s;
+        }
+        .step:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .step-number {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: white;
+            background-color: var(--page-theme-color); /* 步驟數字使用綠色 */
+            width: 35px;
+            height: 35px;
+            min-width: 35px;
+            border-radius: 50%; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+        }
+        .step-content strong {
+            color: var(--color-primary);
+            font-size: 1.1em;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .step-content p {
+            margin: 0;
+            font-size: 1em;
+        }
+        .step-important {
+            border-left: 5px solid var(--color-accent); /* 重點步驟用橘色強調 */
+        }
+        
+        /* CTA 按鈕區塊 */
+        .call-to-action {
+            text-align: center;
+            padding: 35px;
+            background-color: #e0f2f1;
+            color: var(--color-primary);
+            border-radius: 8px;
+            margin: 30px 0;
+            border: 2px dashed var(--page-theme-color); /* 使用綠色虛線邊框 */
+        }
+        .call-to-action h3 {
+            margin-top: 0;
+            font-size: 1.6em;
+            color: var(--color-primary);
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--color-accent); 
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 700;
+            border-radius: 6px;
+            transition: background-color 0.3s, transform 0.1s;
+            box-shadow: 0 4px 10px rgba(255, 87, 34, 0.4);
+            margin-top: 15px;
+        }
+        .cta-button:hover {
+            background-color: #e64a19;
+            transform: translateY(-2px);
+        }
+
+        /* RWD 優化 */
+        @media (max-width: 992px) {
+            .container {
+                margin: 20px;
+                padding: 20px;
+            }
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>ANA Pay 啟用認證教學：海外用戶完整指南</h1>
+        <p>嗨寶貓數位服務：協助您順利開通 ANA Pay 虛擬卡，暢享哩程回饋</p>
+    </div>
+
+    <div class="navbar">
+        <!-- 服務總覽 -->
+        <a href="overview.html" class="nav-item">🏠 服務總覽</a>
+        
+        <!-- 抽選/票務 - Dropdown 1 -->
+        <div class="dropdown btn-ticket" id="dropdown-ticket">
+            <div class="dropbtn">🎫 抽選/票務平台 <span style="font-size: 0.8em;">▼</span></div>
+            <div class="dropdown-content">
+                <a href="index.html">EPLUS 註冊教學</a>
+                <a href="lawson.html">LAWSON TICKET</a>
+                <a href="pia.html">PIA (ぴあ)</a>
+            </div>
+        </div>
+
+        <!-- 數位支付 - Dropdown 2 (Active/Show) -->
+        <div class="dropdown btn-payment show" id="dropdown-payment">
+            <div class="dropbtn">💳 數位支付認證 <span style="font-size: 0.8em;">▼</span></div>
+            <div class="dropdown-content">
+                <a href="ana_pay.html" class="active">ANA Pay 啟用</a>
+                <a href="v_perca.html">V-preca 驗證</a>
+                <a href="paypal.html">PayPal 日本帳號</a>
+                <a href="google_verify.html">Google 帳號驗證</a>
+            </div>
+        </div>
+
+        <!-- 內容訂閱 - Dropdown 3 -->
+        <div class="dropdown btn-content" id="dropdown-content">
+            <div class="dropbtn">🔞 內容訂閱平台 <span style="font-size: 0.8em;">▼</span></div>
+            <div class="dropdown-content">
+                <a href="myfans.html">Myfans 認證</a>
+                <a href="fc2.html">FC2 註冊</a>
+                <a href="candfans.html">Candfans 啟用</a>
+                <a href="cityheaven.html">Cityheaven 登錄</a>
+                <a href="fantube.html">Fantube 認證</a>
+                <a href="piccoma.html">Piccoma 驗證</a>
+                <a href="melonbooks.html">Melonbooks 登錄</a>
+            </div>
+        </div>
+
+        <!-- 遊戲/周邊 - Dropdown 4 -->
+        <div class="dropdown btn-merch" id="dropdown-merch">
+            <div class="dropbtn">🎮 遊戲/周邊商城 <span style="font-size: 0.8em;">▼</span></div>
+            <div class="dropdown-content">
+                <a href="jump_shop.html">JUMP 網上商店</a>
+                <a href="poke_center.html">Pokemon Center</a>
+                <a href="p_bandai.html">Premium Bandai</a>
+                <a href="magi.html">magi (卡牌交易)</a>
+                <a href="game_trade.html">GameTrade</a>
+                <a href="molly_online.html">Molly Online</a>
+                <a href="bushiroad.html">Bushiroad Store</a>
+            </div>
+        </div>
+        
+        <!-- 生活/美食 - Dropdown 5 -->
+        <div class="dropdown btn-life" id="dropdown-life">
+            <div class="dropbtn">🍣 生活/美食預約 <span style="font-size: 0.8em;">▼</span></div>
+            <div class="dropdown-content">
+                <a href="chiikawa.html">Chiikawa Market</a>
+                <a href="omakase.html">OMAKASE 預約</a>
+                <a href="yumeyado.html">yumeyado (住宿)</a>
+            </div>
+        </div>
+
+        <!-- CTA 按鈕：保持獨立 -->
+        <a href="order.html" class="nav-item cta-nav">💰 立即購買驗證服務</a>
+    </div>
+
+    <div class="container">
+        
+        <h2>ANA Pay 帳號註冊與 SMS 驗證步驟</h2>
+
+        <p>ANA Pay 是日本全日空推出的一種電子貨幣（虛擬卡），可用於線上或線下支付，並累積 ANA 哩程。對於海外哩程愛好者來說，開通 ANA Pay 具有高價值。主要難點在於註冊時需要**日本手機號碼**進行簡訊驗證。</p>
+        
+        <p>以下是海外用戶成功啟用 ANA Pay 的四個關鍵步驟：</p>
+
+        <div class="step-container">
+            <!-- 步驟 1 -->
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <strong>下載 APP 並填寫基本資料</strong>
+                    <p>在您的手機下載 ANA Pay 官方 APP。填寫您的 ANA 會員號碼、姓名（需與 ANA 會員資料一致）以及電子信箱。</p>
+                </div>
+            </div>
+            
+            <!-- 步驟 2 -->
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <strong>設定密碼與居住地資訊</strong>
+                    <p>設定您的登入密碼和交易 PIN 碼。ANA Pay 會要求用戶填寫居住地信息，雖然不要求地址，但**系統會檢查手機號碼的國籍屬性**。</p>
+                </div>
+            </div>
+
+            <!-- 步驟 3 - 核心引流點 (SMS 驗證) -->
+            <div class="step step-important">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <strong>【關鍵門檻】日本手機號碼簡訊驗證</strong>
+                    <p>系統會要求您輸入日本手機號碼，並發送一組四位數的簡訊驗證碼。此處是海外用戶自行操作的絕對難點，因為ANA Pay的風控系統會拒絕大多數的網路電話或轉發服務。</p>
+                    <p style="color: var(--color-accent); font-weight: 600;">👉 **嗨寶貓專業解決方案：** 我們提供符合 ANA Pay 要求的真實日本門號代收服務，確保您能一次性通過此環節。</p>
+                </div>
+            </div>
+
+             <!-- 步驟 4 -->
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <strong>完成啟用與虛擬卡片開通</strong>
+                    <p>成功輸入驗證碼後，您的 ANA Pay 虛擬卡片（V-Preca 系統）將立即開通，即可透過信用卡或日本銀行帳戶進行儲值，開始累積哩程。</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="call-to-action">
+            <h3>想快速開通 ANA Pay 累積哩程？</h3>
+            <p>ANA Pay 驗證失敗將導致帳號鎖定。使用嗨寶貓服務，確保您以最快、最安全的方式通過日本手機號碼認證。</p>
+            <!-- 這裡非常重要！請替換成你主站的驗證商品購買連結 -->
+            <a href="【請替換成你主站的驗證商品購買連結】" target="_blank" class="cta-button">立即購買 ANA Pay 驗證服務</a>
+        </div>
+        
+        <p style="text-align: center; font-size: 0.9em; margin-top: 30px; color: #6b7280;">本指南由嗨寶貓數位服務提供，所有內容僅供教學參考。如需驗證服務請透過上方連結購買。</p>
+        
+    </div>
+
+    <script>
+        // JS 函式：用於切換下拉選單的顯示/隱藏狀態 (支援觸控點擊)
+        function toggleDropdown(event) {
+            const dropdown = event.currentTarget.parentElement;
+            // 關閉所有其他已開啟的下拉選單
+            document.querySelectorAll('.dropdown.show').forEach(openDropdown => {
+                if (openDropdown !== dropdown) {
+                    openDropdown.classList.remove('show');
+                }
+            });
+            // 切換當前下拉選單的顯示狀態
+            dropdown.classList.toggle('show');
+            event.stopPropagation(); // 阻止事件冒泡到 document
+        }
+
+        // 監聽器：點擊下拉選單按鈕時觸發
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.dropbtn').forEach(button => {
+                button.addEventListener('click', toggleDropdown);
+            });
+            
+            // 監聽器：點擊頁面其他地方時關閉下拉選單
+            document.addEventListener('click', function(e) {
+                document.querySelectorAll('.dropdown.show').forEach(openDropdown => {
+                    openDropdown.classList.remove('show');
+                });
+            });
+        });
+        
+        // 阻止點擊下拉選單內容時，選單馬上被關閉
+        document.querySelectorAll('.dropdown-content').forEach(content => {
+            content.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
+
+    </script>
+</body>
+</html>
